@@ -2,16 +2,16 @@ create_archive() {
     archive="$1"
     output="archives/$archive"
 
-    echo "Création de l’archive $archive ..."
     rm -f "$output"
 
-    # HEADER et BODY temporaires
     header="temp/header.tmp"
     body="temp/body.tmp"
+
     > "$header"
     > "$body"
 
-    # fonction récursive
+    read -r liste
+
     build_header() {
         local dir="$1"
         echo "directory $dir" >> "$header"
@@ -26,18 +26,33 @@ create_archive() {
                 echo "@" >> "$header"
                 build_header "$f"
             else
-                # fichier
-                start=$(wc -l < "$body")
-                [ "$size" -gt 0 ] && cat "$f" >> "$body"
-                lines=$(wc -l < "$body")
-                nb=$((lines-start))
+                start=$(stat -c %s "$body")
+                cat "$f" >> "$body"
+                end=$(stat -c %s "$body")
+                nb=$((end - start))
+
                 echo "$name $rights $size $start $nb" >> "$header"
             fi
         done
         echo "@" >> "$header"
     }
 
-    build_header .
+    for elem in $liste; do
+        if [ -d "$elem" ]; then
+            build_header "$elem"
+        elif [ -f "$elem" ]; then
+            name=$(basename "$elem")
+            rights=$(stat -c %A "$elem")
+            size=$(stat -c %s "$elem")
+
+            start=$(stat -c %s "$body")
+            cat "$elem" >> "$body"
+            end=$(stat -c %s "$body")
+            nb=$((end - start))
+
+            echo "$name $rights $size $start $nb" >> "$header"
+        fi
+    done
 
     header_lines=$(wc -l < "$header")
     body_start=$((header_lines + 2))
@@ -45,6 +60,4 @@ create_archive() {
     echo "1:$body_start" > "$output"
     cat "$header" >> "$output"
     cat "$body" >> "$output"
-
-    echo "Archive créée dans archives/$archive"
 }
