@@ -1,7 +1,9 @@
 #!/bin/bash
+#Fichier : vsh.sh
+#Corps du programme principal
 
 # === Chargement des modules ===
-source lib/utils.sh
+source lib/list.sh
 source lib/create.sh
 source lib/browse.sh
 source lib/extract.sh
