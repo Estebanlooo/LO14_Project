@@ -1,6 +1,6 @@
 list_archives() {
     echo "Archives disponibles :"
-    ls archives/
+    ls archives/$serveur/$port/
 }
 
 # Renvoie la ligne où commence le body
