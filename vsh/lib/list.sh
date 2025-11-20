@@ -1,6 +1,9 @@
 list_archives() {
     echo "Archives disponibles :"
-    ls archives/$serveur/$port/
+    ls archives/$serveur/$port/ 2> /dev/null
+    if [ $? -ne 0 ]; then
+        echo "Aucune archive trouvée sur le serveur $serveur:$port."
+    fi
 }
 
 # Renvoie la ligne où commence le body
