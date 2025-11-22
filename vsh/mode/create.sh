@@ -18,8 +18,8 @@ create_archive() {
     fi
     # ===============================================
 
-    local PHYSICAL_ROOT_PATH="./Exemple" 
-    local ARCHIVE_ROOT_NAME="Exemple" 
+    local PHYSICAL_ROOT_PATH="./src" 
+    local ARCHIVE_ROOT_NAME="src" 
     
     local temp_dir="temp"
     local header_file="$temp_dir/header.tmp"

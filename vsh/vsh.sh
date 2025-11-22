@@ -3,10 +3,10 @@
 #Corps du programme principal
 
 # === Chargement des modules ===
-source lib/list.sh
-source lib/create.sh
-source lib/browse.sh
-source lib/extract.sh
+source mode/list.sh
+source mode/create.sh
+source mode/browse.sh
+source mode/extract.sh
 
 # === Vérification des arguments ===
 if [ $# -lt 2 ]; then
