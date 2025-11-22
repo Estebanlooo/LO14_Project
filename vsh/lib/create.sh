@@ -12,7 +12,6 @@ create_archive() {
     
     mkdir -p "$ARCHIVE_DEST_DIR"
     
-    # Vérification que la création du répertoire a réussi
     if [ $? -ne 0 ]; then
         echo "Erreur critique : Impossible de créer le chemin de destination $ARCHIVE_DEST_DIR." >&2
         return 1
@@ -22,7 +21,6 @@ create_archive() {
     local PHYSICAL_ROOT_PATH="./Exemple" 
     local ARCHIVE_ROOT_NAME="Exemple" 
     
-    # Préparation des fichiers temporaires (dans le répertoire d'exécution vsh/)
     local temp_dir="temp"
     local header_file="$temp_dir/header.tmp"
     local body_file="$temp_dir/body.tmp"
@@ -46,7 +44,6 @@ create_archive() {
     # ----------------------------------------------------------------------
 
     build_directory_entry() {
-        # ... (Contenu de la fonction inchangé) ...
         local dir_path="$1" 
         local archive_name="$2" 
         
@@ -83,7 +80,6 @@ create_archive() {
     }
     
     build_recursive_header() {
-        # ... (Contenu de la fonction inchangé) ...
         local dir_path="$1"
         local archive_name="$2"
         
