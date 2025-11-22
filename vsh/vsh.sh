@@ -32,7 +32,7 @@ case $mode in
             echo "Usage : vsh -create serveur port nom_archive"
             exit 1
         fi
-        create_archive "$archive"
+        create_archive "$archive" "$serveur" "$port"
     ;;
 
     -browse)

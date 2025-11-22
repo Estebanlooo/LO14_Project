@@ -1,0 +1,31 @@
+2:21
+directory Exemple
+A drwxr-xr-x 4096
+B drwxr-xr-x 4096
+d1 drwxr-xr-x 4096
+d2 drwxr-xr-x 4096
+@
+directory Exemple\A
+A1 -rw-r--r--  1 1
+@
+directory Exemple\B
+B1 -rw-r--r--  2 1
+@
+directory Exemple\d1
+a.txt -rw-r--r--  3 2
+f1.txt -rw-r--r--  5 2
+@
+directory Exemple\d2
+b.txt -rw-r--r--  7 2
+f2.txt -rw-r--r--  9 2
+@
+Ceci est A1
+Ceci est A2
+Ceci est a
+
+Ceci est f1
+
+ceci est b
+
+Ceci est f2
+
