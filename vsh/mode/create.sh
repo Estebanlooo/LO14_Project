@@ -16,8 +16,7 @@ create_archive() {
         echo "Erreur critique : Impossible de créer le chemin de destination $ARCHIVE_DEST_DIR." >&2
         return 1
     fi
-    # ===============================================
-
+   
     local PHYSICAL_ROOT_PATH="./src" 
     local ARCHIVE_ROOT_NAME="src" 
     
@@ -25,10 +24,6 @@ create_archive() {
     local header_file="$temp_dir/header.tmp"
     local body_file="$temp_dir/body.tmp"
     
-    # ----------------------------------------------------------------------
-    # 1. Préparation et Vérification
-    # ----------------------------------------------------------------------
-
     if [ ! -d "$PHYSICAL_ROOT_PATH" ]; then
         echo "Erreur : Le répertoire source '$PHYSICAL_ROOT_PATH' n'existe pas." >&2
         return 1
@@ -39,10 +34,6 @@ create_archive() {
     > "$header_file" 
     > "$body_file"    
     
-    # ----------------------------------------------------------------------
-    # 2. Fonctions de Construction du Header et du Body (inchangées, logiques)
-    # ----------------------------------------------------------------------
-
     build_directory_entry() {
         local dir_path="$1" 
         local archive_name="$2" 
@@ -94,10 +85,6 @@ create_archive() {
             build_recursive_header "$d" "$next_archive_name"
         done
     }
-
-    # ----------------------------------------------------------------------
-    # 3. Démarrage et Finalisation de l'Archive
-    # ----------------------------------------------------------------------
 
     build_recursive_header "$PHYSICAL_ROOT_PATH" "$ARCHIVE_ROOT_NAME"
     
