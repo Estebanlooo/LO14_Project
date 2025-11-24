@@ -1,0 +1,33 @@
+2:23
+directory src
+A drwxr-xr-x 4096
+B drwxr-xr-x 4096
+caca -rw-r--r--  1 1
+d1 drwxr-xr-x 4096
+d2 drwxr-xr-x 4096
+@
+directory src\A
+A1 -rw-r--r--  2 1
+@
+directory src\B
+B1 -rw-r--r--  3 1
+@
+directory src\d1
+a.txt -rw-r--r--  4 2
+f1.txt -rw-r--r--  6 2
+@
+directory src\d2
+b.txt -rw-r--r--  8 2
+f2.txt -rw-r--r--  10 2
+@
+
+Ceci est A1
+Ceci est A2
+Ceci est a
+
+Ceci est f1
+
+ceci est b
+
+Ceci est f2
+
