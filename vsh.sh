@@ -36,7 +36,7 @@ case $mode in
     ;;
 
     -browse)
-        browse_archive "$archive"
+        browse_archive "$archive" "$serveur" "$port"
     ;;
 
     -extract)

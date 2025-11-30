@@ -80,7 +80,7 @@ create_archive() {
             [ -d "$d" ] || continue
             
             local sub_name=$(basename "$d")
-            local next_archive_name="$archive_name\\$sub_name"
+            local next_archive_name="$archive_name/$sub_name"
             
             build_recursive_header "$d" "$next_archive_name"
         done
