@@ -18,6 +18,7 @@ mode=$1
 serveur=$2
 port=$3
 archive=$4
+directory=$5
 
 archives_dir="./archives"
 
@@ -32,7 +33,12 @@ case $mode in
             echo "Usage : vsh -create serveur port nom_archive"
             exit 1
         fi
-        create_archive "$archive" "$serveur" "$port"
+
+        if [ -z "$directory" ] || [ $directory = 0 ];
+        then
+          create_archive "$archive" "$serveur" "$port"
+        fi
+        create_archive "$archive" "$serveur" "$port" "$directory"
     ;;
 
     -browse)

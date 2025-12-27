@@ -27,10 +27,10 @@ browse_archive() {
           awk -v var="$locDoss" '{if($1=="@"){count=0}} {if(count==1){print $0}} {if($2==var){count=1}} {if($1=="@"){count=0}}' ./archives/$serveur/$port/$archive_name
         elif [ $choix2 == "-a" ]
         then
-          echo "-a" # Create lit enfin les fichiers cachés seulement ils sont affiche juste avec un ls 
+          awk -v var="$locDoss" '{if($1=="@"){count=0}} {if(count==1){printf "%s ", $1}} {if($2==var){count=1}} {if($1=="@"){count=0}} END{printf "\n"}' ./archives/$serveur/$port/$archive_name
         elif [ -z $choix2 ]
         then
-          awk -v var="$locDoss" '{if($1=="@"){count=0}} {if(count==1){printf "%s ", $1}} {if($2==var){count=1}} {if($1=="@"){count=0}} END{printf "\n"}' ./archives/$serveur/$port/$archive_name
+          awk -v var="$locDoss" '{if($1=="@"){count=0}} {if(count==1){n=split($1,tab,"");if(tab[1]!="."){m=split($2,fab,"");if(fab[1]=="d"){printf "%s\\ ", $1};if(fab[4]=="x" && fab[1]!="d"){printf "%s* ", $1};if(fab[4]!="x" && fab[1]!="d"){printf "%s ", $1}}}} {if($2==var){count=1}} {if($1=="@"){count=0}} END{printf "\n"}' ./archives/$serveur/$port/$archive_name
         else
           reclocDoss=$locDoss/$choix2
           test=$(awk -v var="$reclocDoss" '{if($2==var){count=1}} END{print count}' ./archives/$serveur/$port/$archive_name)
@@ -46,7 +46,7 @@ browse_archive() {
       cd)
         if [ $choix2 == ".." ]
         then
-          reclocDoss=$(echo "$locDoss" | awk -F/ '{n=split($0,tab,"/"); for(i=1;i<n;i++){if(i==1){printf"%s",tab[i]}else{printf"/%s",tab[i]}}}')
+          reclocDoss=$(echo "$locDoss" | awk -F/ '{for (i=1;i<=NF-1;i++){print $i}}')
           if [ $reclocDoss != 0 ]
           then
             locDoss=$reclocDoss
@@ -67,7 +67,7 @@ browse_archive() {
       ;;
 
       cat)
-        awk -v dos="$locDoss" -v fich="$choix2" 'NR==1 {split($1,tab,":")} {if($1=="@"){count=0}} {if(count==1){if($1==fich){recd=$3;recl=$4}}} {if($2==dos){count=1}} {if($1=="@"){count=0}} {if ((tab[2]+recd-1 <= NR ) && ( NR <= tab[2]+recd+recl-2)){print $0}}' ./archives/$serveur/$port/$archive_name
+        awk -v dos="$locDoss" -v fich="$choix2" 'NR==1 {split($1,tab,":")} {if($1=="@"){count=0}} {if(count==1){if($1==fich){recd=$4;recl=$5}}} {if($2==dos){count=1}} {if($1=="@"){count=0}} {if ((tab[2]+recd-1 <= NR ) && ( NR <= tab[2]+recd+recl-2)){print $0}}' ./archives/$serveur/$port/$archive_name
       ;;
 
       rm)

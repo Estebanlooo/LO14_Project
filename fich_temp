@@ -1,15 +1,14 @@
-2:30
+2:25
 directory src
 A drwxr-xr-x 4096
 B drwxr-xr-x 4096
 caca -rw-r--r--  1 1
 d1 drwxr-xr-x 4096
 d2 drwxr-xr-x 4096
-vide drwxr-xr-x@ 4096
-oui drwxr-xr-x 4096
+pipi -rw-r--r-- 0 0
 @
 directory src/A
-A1 -rw-r--r--  2 1
+
 .A -rw-r--r--@  3 1
 @
 directory src/B
@@ -23,12 +22,8 @@ directory src/d2
 b.txt -rw-r--r--  9 2
 f2.txt -rw-r--r--  11 2
 @
-directory src/vide
-@
-directory src/oui
-@
 
-Ceci est A1
+
 
 Ceci est A2
 Ceci est a
