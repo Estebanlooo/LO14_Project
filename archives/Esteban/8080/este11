@@ -1,16 +1,15 @@
-2:30
+2:27
 directory src
 A drwxr-xr-x 128
 B drwxr-xr-x 96
-caca -rw-r--r--@ 13 1 1
+caca -rw-r--r-- 13 1 1
 d1 drwxr-xr-x 128
 d2 drwxr-xr-x 128
-vide drwxr-xr-x@ 64
-C drwxr-xr-x 4096
+vide drwxr-xr-x 64
 @
 directory src/A
-.A -rw-r--r--@ 0 2 1
-
+.A -rw-r--r-- 0 2 1
+A1 -rwxr-xr-x 11 3 1
 @
 directory src/B
 B1 -rw-r--r-- 11 4 1
@@ -25,9 +24,7 @@ f2.txt -rw-r--r-- 12 11 2
 @
 directory src/vide
 @
-directory src/C
-@
-
+Ceci est caca
 
 Ceci est A1
 Ceci est A2
@@ -37,5 +34,5 @@ Ceci est f1
 
 ceci est b
 
-
+Ceci est f2
 
